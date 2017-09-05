@@ -67,7 +67,7 @@ public class TriangularDrawer {
     }
 
     private void drawSigns(List<Sign> signs, int shiftRight, int shiftBottom) {
-        Font font = new Font("TimesRoman", Font.BOLD , 30);
+        Font font = new Font("TimesRoman", Font.BOLD , 27);
 
         graphic.setFont(font);
         graphic.setPaint(Color.BLUE);
@@ -104,9 +104,9 @@ public class TriangularDrawer {
 
         List<Point> points = Arrays.asList(new Point(aPoint), new Point(bPoint), new Point(cPoint));
         List<Sign> signs = new ArrayList<>();
-        signs.add(new Sign(points.get(0), Integer.toString(angles.get(0))));
-        signs.add(new Sign(points.get(1),  Integer.toString(angles.get(1))));
-        signs.add(new Sign(points.get(2), "?"));
+        signs.add(new Sign(points.get(0), Integer.toString(angles.get(0)) + "°"));
+        signs.add(new Sign(points.get(1),  Integer.toString(angles.get(1)) + "°"));
+        signs.add(new Sign(points.get(2).moveBottom(padding/2).moveRight(padding/3), "?°"));
 
         createOnPoints(points, sizeOfSheet, signs);
     }
