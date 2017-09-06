@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +27,10 @@ public class WriteImageType {
 
 //            triangularDrawer.createOnCathetus(3, 4, 360);
 //            triangularDrawer.createOnCathetAndHypotenuse(5, 6, 360);
-            triangularDrawer.createOnAngles(Arrays.asList(100, 60, 20), 360);
+//            triangularDrawer.createOnAngles(Arrays.asList(60, 60, 60), 360);
 
+            RectangleDrawer rectangleDrawer = new RectangleDrawer(graphic);
+            rectangleDrawer.drawRectangle(3,2, 360);
             ImageIO.write(bi, "png", new File("yourImageName.png"));
             ImageIO.write(bi, "gif", new File("yourImageName.gif"));
 
