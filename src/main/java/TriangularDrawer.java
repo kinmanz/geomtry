@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.geom.GeneralPath;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static heplpers.MathHelpers.cosDegrees;
@@ -19,6 +20,8 @@ public class TriangularDrawer {
     @Setter
     private int padding = 35;
     private Graphics2D graphic;
+
+    private Random random = new Random();
 
     public TriangularDrawer(Graphics2D graphic) {
         this.graphic = graphic;
@@ -51,7 +54,7 @@ public class TriangularDrawer {
         GeneralPath polygon =
                 new GeneralPath(GeneralPath.WIND_EVEN_ODD, NUMBER_OF_POINTS);
 
-        if (sizeOfSheet - points.get(2).getY() - shiftBottom < padding) shiftBottom -= padding;
+        if (sizeOfSheet - points.get(2).getY() - shiftBottom < padding) shiftBottom -= padding/2;
 
         polygon.moveTo(points.get(0).getX() + shiftRight, points.get(0).getY() + shiftBottom);
 
@@ -104,9 +107,12 @@ public class TriangularDrawer {
 
         List<Point> points = Arrays.asList(new Point(aPoint), new Point(bPoint), new Point(cPoint));
         List<Sign> signs = new ArrayList<>();
-        signs.add(new Sign(points.get(0), Integer.toString(angles.get(0)) + "°"));
-        signs.add(new Sign(points.get(1),  Integer.toString(angles.get(1)) + "°"));
-        signs.add(new Sign(points.get(2).moveBottom(padding/2).moveRight(padding/3), "?°"));
+
+        int rand = random.nextInt(3);
+        signs.add(new Sign(points.get(0), rand == 0 ? "?°" : Integer.toString(angles.get(0)) + "°"));
+        signs.add(new Sign(points.get(1), rand == 1 ? "?°" : Integer.toString(angles.get(1)) + "°"));
+        signs.add(new Sign(points.get(2).moveBottom(padding/2).moveRight(padding/3),
+                rand == 2 ? "?°" : Integer.toString(angles.get(2)) + "°"));
 
         createOnPoints(points, sizeOfSheet, signs);
     }

@@ -25,8 +25,8 @@ public class WriteImageType {
             TriangularDrawer triangularDrawer = new TriangularDrawer(graphic);
 
 //            triangularDrawer.createOnCathetus(3, 4, 360);
-//            triangularDrawer.createOnCathetAndHypotenuse(5, 7, 360);
-            triangularDrawer.createOnAngles(Arrays.asList(160, 15, 5), 360);
+//            triangularDrawer.createOnCathetAndHypotenuse(5, 6, 360);
+            triangularDrawer.createOnAngles(Arrays.asList(100, 60, 20), 360);
 
             ImageIO.write(bi, "png", new File("yourImageName.png"));
             ImageIO.write(bi, "gif", new File("yourImageName.gif"));
